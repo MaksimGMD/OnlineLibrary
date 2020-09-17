@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ControlPanel.Master.cs" Inherits="LibraryOnline.Pages.Admin.AdminSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="../../Content/img/admin.png" type="image/x-icon" />
+    <%--Icon--%>
+    <link href="../../Content/css/ControlPanelStyleSheet.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap-grid.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Панель управления</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="overlay">
+            <div id="modalprogress" style="position: absolute; top: 50%; left: 50%; margin: -11px 0 0 -55px;">
+                <div class="theprogress">
+                    <img src="../../Content/img/64x64.gif" />
+                </div>
+            </div>
+        </div>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar -->
+            <div class="border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading">ОНЛАЙН БИБЛИОТЕКА</div>
+                <div class="list-group list-group-flush">
+                    <a id="aWeb" href="../Users/BooksList.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-globe"></i>Открыть сайт</a>
+                    <a id="aUsers" href="UsersPage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fa fa-users"></i>Пользователи</a>
+                    <a id="aBooks" href="BooksPage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-book"></i>Книги</a>
+                    <a id="aOrders" href="OrdersPage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-clipboard-list"></i>Заказы</a>
+                    <a id="aEmployee" href="EmployeeAccPage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-user-tie"></i>Сотрудники</a>
+                    <a id="aProfiles" href="ProfilePage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-id-badge"></i>Анкеты</a>
+                    <a id="aRoles" href="RolesPage.aspx" class="list-group-item list-group-item-action" runat="server"><i class="fas fa-user-tag"></i>Роли</a>
+                </div>
+            </div>
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg border-bottom">
+                    <button class="btn" id="menu-toggle"><i class="fa fa-bars fa-2x"></i></button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <asp:LinkButton class="nav-link dropdown-toggle ml-auto" ID="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server" CausesValidation="False">
+                    </asp:LinkButton>
+                    <div class="dropdown-menu mr-auto dropdown-menu-right" aria-labelledby="navbarDropdown" runat="server" id="dvOut" visible="false">
+                        <asp:LinkButton class="dropdown-item" runat="server" Text="Выйти" OnClick="Unnamed1_Click" CausesValidation="False"></asp:LinkButton>
+                    </div>
+                    <div class="dropdown-menu mr-auto dropdown-menu-right" aria-labelledby="navbarDropdown" runat="server" id="dvIn" visible="false">
+                        <asp:LinkButton class="dropdown-item" runat="server" Text="Войти" OnClick="Unnamed2_Click" CausesValidation="False"></asp:LinkButton>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery.maskedinput.min.js"></script>
+    <%--Загрузка--%>
+    <script>
+        $(function () {
+            $(".overlay").fadeOut(1000, function () {
+                $("#wrapper").fadeIn(1000);
+            });
+        });
+    </script>
+    <%--Выпадающие мень--%>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+</html>

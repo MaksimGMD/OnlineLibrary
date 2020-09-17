@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="LibraryOnline.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="../../Content/img/LibraryIcon.ico" type="image/x-icon" />
+    <%--Icon--%>
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap-grid.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet" />
+    <script type="text/javascript" src="../../Scripts/jquery-3.4.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../Content/css/StyleSheet.css" />
+    <link rel="stylesheet" href="../../Content/fontawesome/css/all.min.css" />
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <title>Онлайн библиотека</title>
+</head>
+<body>
+    <form class="form" id="form1" runat="server">
+        <div class="overlay" style="z-index: 99">
+            <div id="modalprogress" style=" position: absolute; top: 50%; left: 50%; margin: -11px 0 0 -55px;">
+                <div class="theprogress">
+                    <img src="../../Content/img/64x64.gif" />
+                </div>
+            </div>
+        </div>
+        <%--Header--%>
+        <header class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="MainPage.aspx" title="Онлайн библиотека">
+                    <img src="../../Content/img/LibraryIcon.png" />
+                    Библиотека
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarMenu" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navBarMenu">
+                    <div class="navbar-nav">
+                        <a class="item" href="BooksList.aspx">Список книг</a>
+                        <div class="item dropdown" id="dvIn" Display="Dynamic" runat="server">
+                            <asp:LinkButton runat="server" class="nav-link dropdown-toggle" href="#" ID="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Войти
+                            </asp:LinkButton>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../AuthorizationPage.aspx" style="font-size: 18px;">Авторизация</a>
+                                <a class="dropdown-item" href="../RegistrationPage.aspx" style="font-size: 18px;">Регистрация</a>
+                            </div>
+                        </div>
+                        <div class="item dropdown" id="dvUserPage" runat="server" Display="Dynamic">
+                            <asp:LinkButton runat="server" class="nav-link dropdown-toggle" href="#" ID="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Личный кабинет
+                                <i class="far fa-address-card" style="font-size: 30px"></i>
+                            </asp:LinkButton>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <a class="dropdown-item" href="UserPage.aspx" style="font-size: 18px;">Личные данные</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <%--Header--%>
+        <%--Content--%>
+        <asp:ContentPlaceHolder runat="server" ID="cphMainContent"></asp:ContentPlaceHolder>
+        <%--Content--%>
+        <%-- Footer--%>
+        <footer class="container-fluid text-center text-md-center">
+            <div class="row">
+                <div class="col-lg-3 mx-auto mt-auto mb-auto">
+                    <a class="footer-item" href="ProfilePage.aspx">Оставить анкету</a>
+                </div>
+                <hr class="clearfix w-100 d-lg-none">
+                <div class="col-lg-3 mx-auto mt-auto mb-auto">
+                    <a class="footer-item" href="#">Информация о сайте</a>
+                </div>
+                <hr class="clearfix w-100 d-lg-none">
+                <div class="col-lg-3 mx-auto mt-auto mb-auto">
+                    <a class="footer-item" href="#">
+                        <img src="../../Content/img/location-sign.svg" style="color: black; width: 18px; height: 18px" />
+                        Москва, Козицкий пер. д. 2
+                    </a>
+                </div>
+                <hr class="clearfix w-100 d-lg-none">
+                <div class="col-lg-3 mx-auto mt-auto mb-auto">
+                    <a class="footer-item" href="#">Веб-портал московской библиотеки
+                            <img src="../../Content/img/LibraryIcon.png" style="width: 30px; height: 50px" />
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <%-- Footer--%>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery.maskedinput.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+     <%--Загрузка--%>
+    <script>
+        $(function () {
+            $(".overlay").fadeOut(1000, function () {
+                $("#cphMainContent").fadeIn(1000);
+            });
+        });
+    </script>
+</body>
+</html>
